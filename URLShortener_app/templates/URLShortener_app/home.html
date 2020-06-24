@@ -1,0 +1,49 @@
+{% extends "URLShortener_app/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h3> URL Shortener </h3>
+
+<a class="btn btn-primary"  style="float: right;"  href="{% url 'URLShortener-add'  %}"> Add URL Shortener </a>
+
+{% if ob.urlshortener %}
+<div class="container">
+            <h2>Basic Table</h2>
+    <table class="table">
+    <thead>
+      <tr>
+        <th>Hash</th>
+        <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for url_hash in ob.urlshortener %}              
+      <tr>
+        <td>
+        <a href="{{url_hash.url}}">{{url_hash.hash}}</a> 
+        </td>
+        <td>
+        <a  class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'URLShortener-del' url_hash.id %}">Delete</a>
+
+        <a  class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'URLShortener-up' url_hash.id %}">Update</a>
+        </td>
+        
+      </tr>
+      {% endfor %}
+        </tbody>
+        </table>
+{% else %}
+<br><br>
+<h2> There isn't any hash for url in DB </h2>
+{% endif %}
+
+<h2> Presumption: </h2>
+<p> 1) URL field should be legit,  meaning https/https  e.g  https://www.youtube.com/watch?v=F5mRW0jo-U4</p>
+<p> 2) Didnt use CreateView,UpdateView becuase you ask for using forms </p>
+<p> 3) Use simple validation on hash field(exactly only if empty and under 15 digits), because all links should work internally allowing non safe url such  @, ' ' ... </p>
+
+<h2> Scope: </h2>
+<p> didn't use test.py  for Q.C on task </p>
+
+{% endblock content %}

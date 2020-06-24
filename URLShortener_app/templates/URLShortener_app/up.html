@@ -1,0 +1,26 @@
+{% extends 'URLShortener_app/base.html' %}
+{% load crispy_forms_tags  %}
+{% block content %}
+
+
+<a class="btn btn-outline-info"    onclick="javascript:history.go(-1);" >Back</a>
+    <div class="content-section" >
+
+        <div class="content-section">
+<form method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+     <fieldset class ="form-group">
+
+     <legend class = "border-bottom mb-4">  Update mess</legend>
+     {{p_form|crispy}}
+     </fieldset>
+     <div class ="form-group">
+        <button class="btn btn-outline-info" type="submit">Send </button>
+     </div>
+</form>
+        </div>
+    </div>
+
+
+
+{% endblock content %}
