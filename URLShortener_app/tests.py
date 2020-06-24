@@ -7,11 +7,12 @@ class URLShortenerTest(TestCase):
     class for testing model view and form of URLShortener_app
     """
 
-    url_mozl ='https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Testing'
+    def setUp(self):
+        url_mozl ='https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Testing'
 
-    urlshortener_too_long= URLShortener.objects.create(url=url_mozl,hash='ghh23hkjadafsdfasasdas')
-    urlshortener_good= URLShortener.objects.create(url=url_mozl,hash='ghh23')                                           
-    urlshortener_empty_hash= URLShortener.objects.create(url=url_mozl,hash='')
+        self.urlshortener_too_long= URLShortener.objects.create(url=url_mozl,hash='ghh23hkjadafsdfasasdas')
+        self.urlshortener_good= URLShortener.objects.create(url=url_mozl,hash='ghh23')                                           
+        self.urlshortener_empty_hash= URLShortener.objects.create(url=url_mozl,hash='')
     
     # test form - too long hash for URLShortenerForm , URLShortenerUpdatingForm
     def test_form_too_long_hash(self):
