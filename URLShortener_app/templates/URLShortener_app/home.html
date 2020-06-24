@@ -38,13 +38,15 @@
 <h2> There isn't any hash for url in DB </h2>
 {% endif %}
 
+<div class="container">
+
 <h2> Presumption: </h2>
 <p> 1) URL field should be legit,  meaning https/https  e.g  https://www.youtube.com/watch?v=F5mRW0jo-U4</p>
 <p> 2) Didnt use CreateView,UpdateView becuase you ask for using forms </p>
-<p> 3) Use validations on hash field(exactly only if empty and under 15 digits , or without any @,#,$ ... ) </p>
+<p> 3) Use checks on hash field(  - empty field , - under 15 digits , - without any @,#,$ ... ) </p>
 
 
 <h2> Scope: </h2>
 <p> didn't use test.py  for Q.C on task </p>
-
+</div>
 {% endblock content %}
