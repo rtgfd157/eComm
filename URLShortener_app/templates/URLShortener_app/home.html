@@ -18,17 +18,17 @@
         </tr>
         </thead>
         <tbody>
-            {% for url_hash in ob.urlshortener %}              
+            {% for url_hash in ob.urlshortener %}
       <tr>
         <td>
-        <a href="{{url_hash.url}}">{{url_hash.hash}}</a> 
+        <a href="{{url_hash.url}}">{{url_hash.hash}}</a>
         </td>
         <td>
         <a  class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'URLShortener-del' url_hash.id %}">Delete</a>
 
         <a  class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'URLShortener-up' url_hash.id %}">Update</a>
         </td>
-        
+
       </tr>
       {% endfor %}
         </tbody>
@@ -46,7 +46,5 @@
 <p> 3) Use checks on hash field(  - empty field , - under 15 digits , - without any @,#,$ ... ) </p>
 
 
-<h2> Scope: </h2>
-<p> didn't use test.py  for Q.C on task </p>
 </div>
 {% endblock content %}
